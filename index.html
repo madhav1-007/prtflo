@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Porumavilla Madhavan | Developer Portfolio</title>
+
+  <meta
+    name="description"
+    content="Portfolio of Porumavilla Madhavan, a computer science student and aspiring web developer and game graphics programmer."
+  />
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap");
+
+    :root {
+      --black: #050609;
+      --dark-blue: #07111f;
+      --blue: #00b7ff;
+      --bright-blue: #62ddff;
+      --red: #ff1744;
+      --dark-red: #8b001d;
+      --white: #eaf8ff;
+      --muted: #8da5b5;
+      --panel: rgba(7, 24, 40, 0.88);
+      --border: rgba(0, 183, 255, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 80% 10%, rgba(0, 183, 255, 0.12), transparent 25%),
+        radial-gradient(circle at 10% 80%, rgba(255, 23, 68, 0.1), transparent 25%),
+        var(--black);
+      color: var(--white);
+      font-family: "Rajdhani", sans-serif;
+      font-size: 18px;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.14;
+      background-image:
+        linear-gradient(rgba(0, 183, 255, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 183, 255, 0.3) 1px, transparent 1px);
+      background-size: 55px 55px;
+      mask-image: linear-gradient(to bottom, black, transparent);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1150px, 90%);
+      margin: auto;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header::after {
+      content: "2099";
+      position: absolute;
+      right: 3%;
+      bottom: 5%;
+      color: rgba(0, 183, 255, 0.08);
+      font: 800 clamp(5rem, 18vw, 16rem) "Orbitron", sans-serif;
+      letter-spacing: -15px;
+      pointer-events: none;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      padding: 18px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(5, 6, 9, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      color: var(--blue);
+      font: 700 1.15rem "Orbitron", sans-serif;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: var(--red);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+      text-shadow: 0 0 10px var(--blue);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero small {
+      color: var(--red);
+      font: 600 1rem "Orbitron", sans-serif;
+      letter-spacing: 3px;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      margin: 18px 0;
+      color: var(--white);
+      font: 800 clamp(2.5rem, 8vw, 6.5rem) "Orbitron", sans-serif;
+      line-height: 1.05;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 12px rgba(0, 183, 255, 0.5),
+        5px 5px 0 rgba(255, 23, 68, 0.35);
+    }
+
+    .hero h1 span {
+      color: var(--blue);
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 1.35rem;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 25px;
+      color: var(--black);
+      background: var(--blue);
+      border: 1px solid var(--blue);
+      font-weight: 700;
+      clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--bright-blue);
+      box-shadow: 0 0 25px rgba(0, 183, 255, 0.7);
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      color: var(--blue);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      color: var(--black);
+    }
+
+    section {
+      padding: 95px 0;
+    }
+
+    .section-title {
+      margin-bottom: 40px;
+      color: var(--blue);
+      font: 700 clamp(1.8rem, 4vw, 3rem) "Orbitron", sans-serif;
+      text-transform: uppercase;
+    }
+
+    .section-title::before {
+      content: "// ";
+      color: var(--red);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .panel {
+      padding: 30px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: 0 0 25px rgba(0, 183, 255, 0.07);
+      clip-path: polygon(
+        0 0,
+        calc(100% - 15px) 0,
+        100% 15px,
+        100% 100%,
+        15px 100%,
+        0 calc(100% - 15px)
+      );
+    }
+
+    .panel p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .info-list {
+      list-style: none;
+    }
+
+    .info-list li {
+      padding: 10px 0;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(141, 165, 181, 0.15);
+    }
+
+    .info-list strong {
+      color: var(--blue);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .stat {
+      padding: 22px;
+      text-align: center;
+      background: rgba(255, 23, 68, 0.08);
+      border: 1px solid rgba(255, 23, 68, 0.4);
+    }
+
+    .stat h3 {
+      color: var(--red);
+      font: 700 2rem "Orbitron", sans-serif;
+    }
+
+    .stat p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .skill {
+      padding: 15px 22px;
+      color: var(--blue);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .skill:hover {
+      color: white;
+      background: var(--dark-red);
+      border-color: var(--red);
+      box-shadow: 0 0 18px rgba(255, 23, 68, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      padding: 25px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-7px);
+      border-color: var(--red);
+      box-shadow: 0 0 25px rgba(255, 23, 68, 0.2);
+    }
+
+    .project-card h3 {
+      color: var(--blue);
+      font: 600 1.3rem "Orbitron", sans-serif;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      flex: 1;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      width: max-content;
+      margin-bottom: 15px;
+      padding: 5px 10px;
+      color: var(--red);
+      border: 1px solid var(--red);
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .code-box {
+      margin-top: 18px;
+      background: #020409;
+      border: 1px solid rgba(0, 183, 255, 0.3);
+      overflow: hidden;
+    }
+
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 12px;
+      color: var(--muted);
+      background: #0b1724;
+      font-size: 0.85rem;
+    }
+
+    .copy-btn {
+      padding: 4px 10px;
+      color: var(--blue);
+      background: transparent;
+      border: 1px solid var(--blue);
+      cursor: pointer;
+    }
+
+    pre {
+      padding: 15px;
+      overflow-x: auto;
+      color: #b8f1ff;
+      font: 0.82rem/1.5 Consolas, monospace;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact p {
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      padding: 12px 18px;
+      color: var(--blue);
+      border: 1px solid var(--border);
+      transition: 0.3s;
+    }
+
+    .contact-links a:hover {
+      color: white;
+      border-color: var(--red);
+      background: rgba(255, 23, 68, 0.15);
+    }
+
+    footer {
+      padding: 25px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    footer span {
+      color: var(--red);
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        padding: 15px 5%;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#home" class="logo">MADHAVAN<span>.DEV</span></a>
+
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header id="home">
+    <div class="container hero">
+      <small>STUDENT DEVELOPER // CHENNAI, INDIA</small>
+
+      <h1>
+        Porumavilla <span>Madhavan</span>
+      </h1>
+
+      <p>
+        Computer science student, coder, and aspiring web developer exploring
+        game graphics, software development, and futuristic digital experiences.
+      </p>
+
+      <div class="buttons">
+        <a href="#projects" class="btn">Explore Projects</a>
+        <a
+          href="https://github.com/madhav1-007"
+          target="_blank"
+          class="btn btn-outline"
+        >
+          View GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+
+      <div class="about-grid">
+        <div class="panel">
+          <p>
+            I am Porumavilla Madhavan, a student at Sai University in Chennai.
+            I enjoy coding, learning new technologies, and developing projects
+            that combine logic, creativity, and technology.
+          </p>
+
+          <p>
+            My current interests are web development and game graphics. I am
+            strengthening my programming foundation with C and Python while
+            learning Java and HTML.
+          </p>
+
+          <p>
+            My goal is to become a skilled developer capable of creating
+            interactive websites, useful applications, and visually engaging
+            game experiences.
+          </p>
+        </div>
+
+        <div class="panel">
+          <ul class="info-list">
+            <li><strong>Name:</strong> Porumavilla Madhavan</li>
+            <li><strong>University:</strong> Sai University</li>
+            <li><strong>Location:</strong> Chennai, India</li>
+            <li><strong>Current Semester:</strong> Semester 3</li>
+            <li><strong>Email:</strong> madhavan.p-29@scds.saiuniversity.edu.in</li>
+            <li><strong>Career Goal:</strong> Web Development & Game Graphics</li>
+          </ul>
+
+          <div class="stats">
+            <div class="stat">
+              <h3>7.0</h3>
+              <p>Semester 1 GPA</p>
+            </div>
+
+            <div class="stat">
+              <h3>7.4</h3>
+              <p>Semester 2 GPA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills & Learning</h2>
+
+      <div class="skills">
+        <div class="skill">C Programming</div>
+        <div class="skill">Python</div>
+        <div class="skill">HTML</div>
+        <div class="skill">Java — Learning</div>
+        <div class="skill">Problem Solving</div>
+        <div class="skill">Algorithms</div>
+        <div class="skill">Web Development</div>
+        <div class="skill">Game Graphics</div>
+        <div class="skill">GitHub</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Code Projects</h2>
+
+      <div class="projects">
+
+        <!-- Python Project -->
+        <article class="project-card">
+          <span class="tag">PYTHON // BEGINNER</span>
+          <h3>Number Guessing Game</h3>
+          <p>
+            A simple command-line game where the player tries to guess a
+            randomly generated number.
+          </p>
+
+          <div class="code-box">
+            <div class="code-header">
+              <span>number_guess.py</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+
+            <pre><code>import random
+
+secret_number = random.randint(1, 100)
+attempts = 0
+
+print("Guess the number between 1 and 100!")
+
+while True:
+    guess = int(input("Enter your guess: "))
+    attempts += 1
+
+    if guess &lt; secret_number:
+        print("Too low!")
+    elif guess &gt; secret_number:
+        print("Too high!")
+    else:
+        print(f"Correct! You won in {attempts} attempts.")
+        break</code></pre>
+          </div>
+        </article>
+
+        <!-- Python Project -->
+        <article class="project-card">
+          <span class="tag">PYTHON // BEGINNER</span>
+          <h3>To-Do List Application</h3>
+          <p>
+            A terminal-based task manager that allows users to add, view, and
+            remove tasks.
+          </p>
+
+          <div class="code-box">
+            <div class="code-header">
+              <span>todo.py</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+
+            <pre><code>tasks = []
+
+while True:
+    print("\n1. Add task")
+    print("2. View tasks")
+    print("3. Remove task")
+    print("4. Exit")
+
+    choice = input("Choose an option: ")
+
+    if choice == "1":
+        task = input("Enter a task: ")
+        tasks.append(task)
+        print("Task added.")
+
+    elif choice == "2":
+        if not tasks:
+            print("No tasks available.")
+        else:
+            for index, task in enumerate(tasks, start=1):
+                print(f"{index}. {task}")
+
+    elif choice == "3":
+        number = int(input("Enter task number: "))
+        if 1 &lt;= number &lt;= len(tasks):
+            tasks.pop(number - 1)
+            print("Task removed.")
+        else:
+            print("Invalid task number.")
+
+    elif choice == "4":
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid option.")</code></pre>
+          </div>
+        </article>
+
+        <!-- C Project -->
+        <article class="project-card">
+          <span class="tag">C // BEGINNER</span>
+          <h3>Student Grade Calculator</h3>
+          <p>
+            Calculates a student's average mark and displays a corresponding
+            grade.
+          </p>
+
+          <div class="code-box">
+            <div class="code-header">
+              <span>grades.c</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int marks[5];
+    int total = 0;
+    float average;
+
+    printf("Enter marks for 5 subjects:\n");
+
+    for (int i = 0; i &lt; 5; i++) {
+        printf("Subject %d: ", i + 1);
+        scanf("%d", &amp;marks[i]);
+        total += marks[i];
+    }
+
+    average = total / 5.0;
+
+    printf("\nAverage: %.2f\n", average);
+
+    if (average &gt;= 90)
+        printf("Grade: A\n");
+    else if (average &gt;= 75)
+        printf("Grade: B\n");
+    else if (average &gt;= 60)
+        printf("Grade: C\n");
+    else
+        printf("Grade: Needs Improvement\n");
+
+    return 0;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- C Project -->
+        <article class="project-card">
+          <span class="tag">C // INTERMEDIATE</span>
+          <h3>Contact Management System</h3>
+          <p>
+            Stores contact names and phone numbers using structures and file
+            handling.
+          </p>
+
+          <div class="code-box">
+            <div class="code-header">
+              <span>contacts.c</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct Contact {
+    char name[50];
+    char phone[20];
+};
+
+int main() {
+    struct Contact contacts[100];
+    int count = 0;
+    int choice;
+
+    while (1) {
+        printf("\n1. Add contact\n");
+        printf("2. View contacts\n");
+        printf("3. Exit\n");
+        printf("Choose: ");
+        scanf("%d", &amp;choice);
+
+        if (choice == 1) {
+            printf("Name: ");
+            scanf(" %[^\n]", contacts[count].name);
+
+            printf("Phone: ");
+            scanf(" %[^\n]", contacts[count].phone);
+
+            count++;
+            printf("Contact saved.\n");
+        }
+
+        else if (choice == 2) {
+            for (int i = 0; i &lt; count; i++) {
+                printf("%d. %s - %s\n",
+                       i + 1,
+                       contacts[i].name,
+                       contacts[i].phone);
+            }
+        }
+
+        else if (choice == 3) {
+            break;
+        }
+
+        else {
+            printf("Invalid choice.\n");
+        }
+    }
+
+    return 0;
+}</code></pre>
+          </div>
+        </article>
+
+        <!-- Advanced Python Project -->
+        <article class="project-card">
+          <span class="tag">PYTHON // ADVANCED</span>
+          <h3>Object-Oriented Bank System</h3>
+          <p>
+            Demonstrates classes, encapsulation, deposits, withdrawals, and
+            transaction validation.
+          </p>
+
+          <div class="code-box">
+            <div class="code-header">
+              <span>bank_system.py</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+
+            <pre><code>class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.__balance = balance
+
+    def deposit(self, amount):
+        if amount &lt;= 0:
+            print("Deposit must be positive.")
+            return
+
+        self.__balance += amount
+        print(f"Deposited: ₹{amount}")
+
+    def withdraw(self, amount):
+        if amount &lt;= 0:
+            print("Amount must be positive.")
+        elif amount &gt; self.__balance:
+            print("Insufficient balance.")
+        else:
+            self.__balance -= amount
+            print(f"Withdrawn: ₹{amount}")
+
+    def show_balance(self):
+        print(f"{self.owner}'s balance: ₹{self.__balance}")
+
+
+account = BankAccount("Madhavan", 1000)
+
+account.show_balance()
+account.deposit(500)
+account.withdraw(250)
+account.show_balance()</code></pre>
+          </div>
+        </article>
+
+        <!-- Advanced C Project -->
+        <article class="project-card">
+          <span class="tag">C // ADVANCED</span>
+          <h3>Linked List Data Structure</h3>
+          <p>
+            Implements a dynamic linked list using pointers and structures.
+          </p>
+
+          <div class="code-box">
+            <div class="code-header">
+              <span>linked_list.c</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+void printList(struct Node* head) {
+    while (head != NULL) {
+        printf("%d -&gt; ", head-&gt;data);
+        head = head-&gt;next;
+    }
+
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node* first = NULL;
+    struct Node* second = NULL;
+    struct Node* third = NULL;
+
+    first = malloc(sizeof(struct Node));
+    second = malloc(sizeof(struct Node));
+    third = malloc(sizeof(struct Node));
+
+    first-&gt;data = 10;
+    first-&gt;next = second;
+
+    second-&gt;data = 20;
+    second-&gt;next = third;
+
+    third-&gt;data = 30;
+    third-&gt;next = NULL;
+
+    printList(first);
+
+    free(first);
+    free(second);
+    free(third);
+
+    return 0;
+}</code></pre>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container contact">
+      <h2 class="section-title">Connect With Me</h2>
+
+      <p>
+        I am open to learning opportunities, collaborations, coding projects,
+        and conversations about web development and game graphics.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:madhavan.p-29@scds.saiuniversity.edu.in">
+          Email Me
+        </a>
+
+        <a href="https://github.com/madhav1-007" target="_blank">
+          GitHub
+        </a>
+
+        <a href="https://github.com/madhav1-007" target="_blank">
+          My Projects
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      Designed and coded by <span>Porumavilla Madhavan</span> © 2026
+    </p>
+  </footer>
+
+  <script>
+    function copyCode(button) {
+      const code = button
+        .closest(".code-box")
+        .querySelector("code")
+        .innerText;
+
+      navigator.clipboard.writeText(code);
+
+      const originalText = button.innerText;
+      button.innerText = "Copied!";
+
+      setTimeout(() => {
+        button.innerText = originalText;
+      }, 1500);
+    }
+  </script>
+
+</body>
+</html>
