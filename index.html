@@ -177,7 +177,12 @@
       background: var(--blue);
       border: 1px solid var(--blue);
       font-weight: 700;
-      clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+      clip-path: polygon(
+        8px 0,
+        100% 0,
+        calc(100% - 8px) 100%,
+        0 100%
+      );
       transition: 0.3s;
     }
 
@@ -471,13 +476,26 @@
       </p>
 
       <div class="buttons">
-        <a href="#projects" class="btn">Explore Projects</a>
+        <a href="#projects" class="btn">
+          Explore Projects
+        </a>
+
         <a
           href="https://github.com/madhav1-007"
           target="_blank"
+          rel="noopener noreferrer"
           class="btn btn-outline"
         >
           View GitHub
+        </a>
+
+        <a
+          href="Porumavilla_Madhavan_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-outline"
+        >
+          View Resume
         </a>
       </div>
     </div>
@@ -515,13 +533,19 @@
             <li><strong>University:</strong> Sai University</li>
             <li><strong>Location:</strong> Chennai, India</li>
             <li><strong>Current Semester:</strong> Semester 3</li>
-            <li><strong>Email:</strong> madhavan.p-29@scds.saiuniversity.edu.in</li>
-            <li><strong>Career Goal:</strong> Web Development & Game Graphics</li>
+            <li>
+              <strong>Email:</strong>
+              madhavan.p-29@scds.saiuniversity.edu.in
+            </li>
+            <li>
+              <strong>Career Goal:</strong>
+              Web Development &amp; Game Graphics
+            </li>
           </ul>
 
           <div class="stats">
             <div class="stat">
-              <h3>7.0</h3>
+              <h3>6.7</h3>
               <p>Semester 1 GPA</p>
             </div>
 
@@ -538,7 +562,7 @@
   <!-- Skills -->
   <section id="skills">
     <div class="container">
-      <h2 class="section-title">Skills & Learning</h2>
+      <h2 class="section-title">Skills &amp; Learning</h2>
 
       <div class="skills">
         <div class="skill">C Programming</div>
@@ -565,6 +589,7 @@
         <article class="project-card">
           <span class="tag">PYTHON // BEGINNER</span>
           <h3>Number Guessing Game</h3>
+
           <p>
             A simple command-line game where the player tries to guess a
             randomly generated number.
@@ -573,7 +598,9 @@
           <div class="code-box">
             <div class="code-header">
               <span>number_guess.py</span>
-              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <button class="copy-btn" onclick="copyCode(this)">
+                Copy
+              </button>
             </div>
 
             <pre><code>import random
@@ -601,6 +628,7 @@ while True:
         <article class="project-card">
           <span class="tag">PYTHON // BEGINNER</span>
           <h3>To-Do List Application</h3>
+
           <p>
             A terminal-based task manager that allows users to add, view, and
             remove tasks.
@@ -609,7 +637,9 @@ while True:
           <div class="code-box">
             <div class="code-header">
               <span>todo.py</span>
-              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <button class="copy-btn" onclick="copyCode(this)">
+                Copy
+              </button>
             </div>
 
             <pre><code>tasks = []
@@ -636,6 +666,7 @@ while True:
 
     elif choice == "3":
         number = int(input("Enter task number: "))
+
         if 1 &lt;= number &lt;= len(tasks):
             tasks.pop(number - 1)
             print("Task removed.")
@@ -655,6 +686,7 @@ while True:
         <article class="project-card">
           <span class="tag">C // BEGINNER</span>
           <h3>Student Grade Calculator</h3>
+
           <p>
             Calculates a student's average mark and displays a corresponding
             grade.
@@ -663,7 +695,9 @@ while True:
           <div class="code-box">
             <div class="code-header">
               <span>grades.c</span>
-              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <button class="copy-btn" onclick="copyCode(this)">
+                Copy
+              </button>
             </div>
 
             <pre><code>#include &lt;stdio.h&gt;
@@ -703,6 +737,7 @@ int main() {
         <article class="project-card">
           <span class="tag">C // INTERMEDIATE</span>
           <h3>Contact Management System</h3>
+
           <p>
             Stores contact names and phone numbers using structures and file
             handling.
@@ -711,7 +746,9 @@ int main() {
           <div class="code-box">
             <div class="code-header">
               <span>contacts.c</span>
-              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <button class="copy-btn" onclick="copyCode(this)">
+                Copy
+              </button>
             </div>
 
             <pre><code>#include &lt;stdio.h&gt;
@@ -772,6 +809,7 @@ int main() {
         <article class="project-card">
           <span class="tag">PYTHON // ADVANCED</span>
           <h3>Object-Oriented Bank System</h3>
+
           <p>
             Demonstrates classes, encapsulation, deposits, withdrawals, and
             transaction validation.
@@ -780,7 +818,9 @@ int main() {
           <div class="code-box">
             <div class="code-header">
               <span>bank_system.py</span>
-              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <button class="copy-btn" onclick="copyCode(this)">
+                Copy
+              </button>
             </div>
 
             <pre><code>class BankAccount:
@@ -822,6 +862,7 @@ account.show_balance()</code></pre>
         <article class="project-card">
           <span class="tag">C // ADVANCED</span>
           <h3>Linked List Data Structure</h3>
+
           <p>
             Implements a dynamic linked list using pointers and structures.
           </p>
@@ -829,7 +870,9 @@ account.show_balance()</code></pre>
           <div class="code-box">
             <div class="code-header">
               <span>linked_list.c</span>
-              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <button class="copy-btn" onclick="copyCode(this)">
+                Copy
+              </button>
             </div>
 
             <pre><code>#include &lt;stdio.h&gt;
@@ -897,12 +940,28 @@ int main() {
           Email Me
         </a>
 
-        <a href="https://github.com/madhav1-007" target="_blank">
+        <a
+          href="https://github.com/madhav1-007"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           GitHub
         </a>
 
-        <a href="https://github.com/madhav1-007" target="_blank">
+        <a
+          href="https://github.com/madhav1-007"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           My Projects
+        </a>
+
+        <a
+          href="Porumavilla_Madhavan_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Resume
         </a>
       </div>
     </div>
